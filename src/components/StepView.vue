@@ -14,7 +14,7 @@
                 </div>
                 <div :hidden="!allowNext">
                     <button 
-                        class="primary accent-2" 
+                        class="primary accent-1" 
                         v-on:click="finish" 
                         v-if="step >= questions.length - 1"
                     >Finish</button>
