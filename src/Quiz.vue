@@ -7,15 +7,22 @@
   ></title-page>
   <step-view
     v-else-if="page === 'questions'"
-    :questions="questions"
+    :questions="internalQuestions"
+    v-on:finish="handleShowSummary"
   ></step-view>
+  <summary-page
+    v-else-if="page === 'summary'"
+    :questions="internalQuestions"
+    v-on:restart="handleRestart"
+  ></summary-page>
 </template>
 
 <script>
 import TitlePage from "./components/TitlePage.vue";
 import StepView from "./components/StepView.vue";
+import SummaryPage from "./components/SummaryPage.vue";
 export default {
-  components: { TitlePage, StepView },
+  components: { TitlePage, StepView, SummaryPage },
   props: {
     questions: {
       type: Array,
@@ -27,6 +34,18 @@ export default {
       page: "title"
     };
   },
+  computed: {
+    internalQuestions () {
+      // Don't pollute the source with additional information
+      const toRet = JSON.parse(JSON.stringify(this.questions));
+
+      for (let i = 0; i < toRet.length; i++) {
+        toRet.id = i;
+      }
+
+      return toRet;
+    }
+  },
   methods: {
     handleStart () {
       this.page = "questions";
@@ -36,6 +55,9 @@ export default {
     },
     handleRestart () {
       this.page = "title";
+      for (const q of this.internalQuestions) {
+        delete q.response;
+      }
     }
   }
 };

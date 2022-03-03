@@ -6,10 +6,10 @@ The stylesheet used is from my website and other various projects at [Ars Materi
 
 ## Requirements
 
-- [ ] A button should be used to advance from one question to the next
-- [ ] The user cannot advance to the next question without answering the current question
-- [ ] Once a question has been answered, the user cannot revisit it
-- [ ] The summary should display all questions and their respective answers in one view
+- [x] A button should be used to advance from one question to the next
+- [x] The user cannot advance to the next question without answering the current question
+- [x] Once a question has been answered, the user cannot revisit it
+- [x] The summary should display all questions and their respective answers in one view
 
 ## Reference
 
