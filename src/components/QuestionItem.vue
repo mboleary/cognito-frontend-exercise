@@ -1,13 +1,14 @@
 <template>
-    
+    <fieldset class="flex-layout vertical ">
+        <label> {{text}} </label>
+        <label class="option" v-for="answer of answers" v-bind:key="answer"><input type="radio" name="type" :value="answer">{{answer}}</label>
+    </fieldset>
 </template>
 
 <script>
-import Summary from "./Summary.vue";
-
 export default {
     data: () => ({
-        currPage: "title",
+        selectedItem: ""
         
     }),
     props: {

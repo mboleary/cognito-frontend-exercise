@@ -4,7 +4,7 @@
             <h1>{{title}}</h1>
             <hr>
             <p>{{description}}</p>
-            <button class="primary">Start</button>
+            <button class="primary" v-on:click="start">Start</button>
         </div>
     </div>
 </template>
@@ -19,6 +19,11 @@ export default {
         description: {
             type: String,
             required: true
+        }
+    },
+    methods: {
+        start: function(e) {
+            this.$emit("start");
         }
     }
 }
